@@ -45,18 +45,14 @@ public class TicketController {
         if (bindingResult.hasErrors()) {
             return "tickets/storeTicket";
         };
-        ticket.setUsers(usersService.findByEmail(principal.getName()));
-        ticketService.storeTicket(ticket);
+
         return "redirect:/";
     }
 
     @RequestMapping(value = "/tickets/edit/{id}", method = RequestMethod.GET)
     public String editTicket(Model model,@PathVariable("id") Long id) {
         // Code here
-
-        model.addAttribute("ticket", ticketService.findById(id));
-        return "tickets/storeTicket";
-        //return "redirect:/"; //Remove this line
+        return "redirect:/"; //Remove this line
     }
 
     @RequestMapping(value = "/tickets/delete/{id}", method = RequestMethod.GET)
